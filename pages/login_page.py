@@ -1,15 +1,14 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from .utils import Utils
+
 
 class LoginPage(BasePage):
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
     INPUT_EMAIL = (By.CSS_SELECTOR, "input#id_registration-email")
-    INPUT_PASSWORD = (By.CSS_SELECTOR,"input#id_registration-password1")
+    INPUT_PASSWORD = (By.CSS_SELECTOR, "input#id_registration-password1")
     INPUT_PASSWORD_REPEAT = (By.CSS_SELECTOR, "input#id_registration-password2")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "button[name = 'registration_submit']")
-
 
     def register(self, email, password):
         input_email = self.browser.find_element(*self.INPUT_EMAIL)

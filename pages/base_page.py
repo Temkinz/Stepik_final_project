@@ -1,13 +1,17 @@
-
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
+
 class BasePage():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     BASKET_BUTTON = (By.CSS_SELECTOR, "header span > a")
+    SEARCH_INPUT = (By.CSS_SELECTOR, "input#id_q")
+    SEARCH_BUTTON = (By.CSS_SELECTOR, "input.btn.btn-default")
+
+    SEARCH_TEXT = "The shellcoder's handbook"
 
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
@@ -45,6 +49,13 @@ class BasePage():
 
     def open(self):
         self.browser.get(self.url)
+
+    def search(self):
+        search_input = self.browser.find_element(*self.SEARCH_INPUT)
+        search_input.clear()
+        search_input.send_keys(*self.SEARCH_TEXT)
+        search_button = self.browser.find_element(*self.SEARCH_BUTTON)
+        search_button.click()
 
     def should_be_login_link(self):
         assert self.is_element_present(*self.LOGIN_LINK), "Login link is not presented"

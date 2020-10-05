@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
 
+
 class BasketPage(BasePage):
     BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner > p")
     BASKET_EMPTY_TEXT = "Your basket is empty. Continue shopping"
