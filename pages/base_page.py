@@ -11,7 +11,7 @@ class BasePage():
     SEARCH_INPUT = (By.CSS_SELECTOR, "input#id_q")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "input.btn.btn-default")
 
-    SEARCH_TEXT = "The shellcoder's handbook"
+    SEARCH_TEXT = "Coders at Work"
 
     def __init__(self, browser, url, timeout=10):
         self.browser = browser

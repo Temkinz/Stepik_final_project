@@ -10,6 +10,12 @@ class LoginPage(BasePage):
     INPUT_PASSWORD_REPEAT = (By.CSS_SELECTOR, "input#id_registration-password2")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "button[name = 'registration_submit']")
 
+    login_page_link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
+
+    def __init__(self, browser):
+        login_page_link = self.login_page_link
+        BasePage.__init__(self, browser, login_page_link)
+
     def register(self, email, password):
         input_email = self.browser.find_element(*self.INPUT_EMAIL)
         input_email.send_keys(email)

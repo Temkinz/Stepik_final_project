@@ -6,10 +6,10 @@ from .pages.search_result_page import SearchResultPage
 
 
 def test_user_can_be_registered(browser):
-    link = "http://selenium1py.pythonanywhere.com"
+    link = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, link)
     page.open()
-    login_page = page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
     login_page.should_be_login_page()
     email = Utils.email()
     password = Utils.passwords()
@@ -30,7 +30,7 @@ def test_guest_can_go_to_login_page(browser):
     main_page = MainPage(browser, link)
     main_page.open()
     main_page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
+    login_page = LoginPage(browser)
     login_page.should_be_login_page()
 
 

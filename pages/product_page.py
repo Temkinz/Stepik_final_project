@@ -8,6 +8,12 @@ class ProductPage(BasePage):
     BOOK_TITLE = (By.CSS_SELECTOR, "div h1")
     BOOK_MESSAGE = (By.CSS_SELECTOR, "#messages > div:nth-child(1) div > strong")
 
+    product_page_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+
+    def __init__(self, browser):
+        product_page_link = self.product_page_link
+        BasePage.__init__(self, browser, product_page_link)
+
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*self.BOOK_MESSAGE), \
             "Success message is presented, but should not be"

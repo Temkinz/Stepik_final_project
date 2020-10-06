@@ -1,6 +1,7 @@
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
+from .pages.search_result_page import SearchResultPage
 
 
 def test_guest_cant_see_success_message(browser):
@@ -34,3 +35,11 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.should_not_be_products_in_basket()
     basket_page.check_basket_is_empty()
+
+def test_search_from_product_page(browser):
+    product_page_link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    product_page = ProductPage(browser, product_page_link)
+    product_page.open()
+    product_page.search()
+    search_result_page = SearchResultPage(browser, browser.current_url)
+    search_result_page.check_search_result()
