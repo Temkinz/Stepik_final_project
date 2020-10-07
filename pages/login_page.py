@@ -24,6 +24,7 @@ class LoginPage(BasePage):
         input_password.send_keys(password)
         self.browser.find_element(*self.REGISTRATION_BUTTON).click()
 
+
     def should_be_login_page(self):
         self.should_be_login_form()
         self.should_be_register_form()

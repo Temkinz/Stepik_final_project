@@ -10,6 +10,7 @@ class BasePage():
     BASKET_BUTTON = (By.CSS_SELECTOR, "header span > a")
     SEARCH_INPUT = (By.CSS_SELECTOR, "input#id_q")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "input.btn.btn-default")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
     SEARCH_TEXT = "Coders at Work"
 
@@ -57,5 +58,13 @@ class BasePage():
         search_button = self.browser.find_element(*self.SEARCH_BUTTON)
         search_button.click()
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*self.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
     def should_be_login_link(self):
         assert self.is_element_present(*self.LOGIN_LINK), "Login link is not presented"
+
+    def should_not_be_login_link(self):
+        assert self.is_not_element_present(*self.LOGIN_LINK), \
+            "Login link is presented"
