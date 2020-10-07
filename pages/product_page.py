@@ -11,8 +11,7 @@ class ProductPage(BasePage):
     product_page_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
     def __init__(self, browser):
-        product_page_link = self.product_page_link
-        BasePage.__init__(self, browser, product_page_link)
+        BasePage.__init__(self, browser, self.product_page_link)
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*self.BOOK_MESSAGE), \

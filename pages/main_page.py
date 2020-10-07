@@ -6,6 +6,11 @@ class MainPage(BasePage):
     REGISTRATION_MESSAGE_ACTUAL = (By.CSS_SELECTOR, "div.alert-success > div")
     REGISTRATION_MESSAGE_EXPECTED = "Thanks for registering!"
 
+    main_page_link = "http://selenium1py.pythonanywhere.com/"
+
+    def __init__(self, browser):
+        BasePage.__init__(self, browser, self.main_page_link)
+
 
     def check_registration_message(self):
         registration_message = self.browser.find_element(*self.REGISTRATION_MESSAGE_ACTUAL).text

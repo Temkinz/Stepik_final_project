@@ -7,6 +7,10 @@ class BasketPage(BasePage):
     BASKET_EMPTY_TEXT = "Your basket is empty. Continue shopping"
     PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, "h2.col-sm-6.h3")
 
+    basket_page_link = "http://selenium1py.pythonanywhere.com/basket/"
+
+    def __init__(self, browser):
+        BasePage.__init__(self, browser, self.basket_page_link)
 
     def check_basket_is_empty(self):
         basket_message = self.browser.find_element(*self.BASKET_MESSAGE).text
