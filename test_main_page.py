@@ -13,7 +13,7 @@ class TestForUserFromMainPage:
         # Act
         main_page.go_to_login_page()
         login_page = LoginPage(browser)
-        login_page.should_be_login_page()
+        login_page.login_form_is_present()
         email = Utils.email()
         password = Utils.passwords()
         login_page.register(email, password)
@@ -28,7 +28,7 @@ class TestForUserFromMainPage:
         # Act
         main_page.go_to_login_page()
         login_page = LoginPage(browser)
-        login_page.should_be_login_page()
+        login_page.login_form_is_present()
         login_page.login()
         main_page = MainPage(browser)
         # Assert

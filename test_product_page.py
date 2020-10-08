@@ -98,6 +98,20 @@ class TestForGuestFromProductPage:
         basket_page.should_be_product_in_basket(book_title)
         basket_page.should_be_correct_price(price)
 
+    def test_guest_can_delete_product_from_basket(self, browser):
+        # Arrange
+        product_page = ProductPage(browser)
+        product_page.open()
+        # Act
+        product_page.add_product_to_basket()
+        basket_page = BasketPage(browser)
+        basket_page.open()
+        basket_page.change_quantity_of_products_to_zero()
+        # Assert
+        basket_page.should_not_be_products_in_basket()
+        basket_page.check_basket_is_empty()
+
+
     def test_search_from_product_page(self, browser):
         # Arrange
         product_page = ProductPage(browser)
@@ -107,7 +121,6 @@ class TestForGuestFromProductPage:
         search_result_page = SearchResultPage(browser, browser.current_url)
         # Assert
         search_result_page.check_search_result()
-
 
 
 

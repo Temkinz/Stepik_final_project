@@ -47,9 +47,12 @@ class LoginPage(BasePage):
         assert "login" in self.browser.current_url, "Login link is not presented"
 
     def should_be_login_form(self):
-        self.is_element_present(*self.LOGIN_FORM)
+        self.is_element_present_new(*self.LOGIN_FORM)
         assert True, "Login form is not presented"
 
     def should_be_register_form(self):
-        self.is_element_present(*self.REGISTER_FORM)
+        self.is_element_present_new(*self.REGISTER_FORM)
         assert True, "Register form is not presented"
+
+    def login_form_is_present(self):
+        self.is_element_present_new(*self.LOGIN_FORM)
