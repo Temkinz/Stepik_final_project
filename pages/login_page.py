@@ -5,10 +5,17 @@ from selenium.webdriver.common.by import By
 class LoginPage(BasePage):
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
-    INPUT_EMAIL = (By.CSS_SELECTOR, "input#id_registration-email")
-    INPUT_PASSWORD = (By.CSS_SELECTOR, "input#id_registration-password1")
-    INPUT_PASSWORD_REPEAT = (By.CSS_SELECTOR, "input#id_registration-password2")
+    INPUT_EMAIL_REG = (By.CSS_SELECTOR, "input#id_registration-email")
+    INPUT_PASSWORD_REG = (By.CSS_SELECTOR, "input#id_registration-password1")
+    INPUT_PASSWORD_REG_REPEAT = (By.CSS_SELECTOR, "input#id_registration-password2")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "button[name = 'registration_submit']")
+
+    INPUT_EMAIL_LOGIN = (By.CSS_SELECTOR, "input#id_login-username")
+    INPUT_PASSWORD_LOGIN = (By.CSS_SELECTOR, "input#id_login-password")
+    LOGIN_BUTTON = (By.CSS_SELECTOR, "button[name = 'login_submit']")
+
+    login_email = "test30082020@gmail.com"
+    login_password = "Test202020"
 
     login_page_link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
 
@@ -16,14 +23,20 @@ class LoginPage(BasePage):
         BasePage.__init__(self, browser, self.login_page_link)
 
     def register(self, email, password):
-        input_email = self.browser.find_element(*self.INPUT_EMAIL)
+        input_email = self.browser.find_element(*self.INPUT_EMAIL_REG)
         input_email.send_keys(email)
-        input_password = self.browser.find_element(*self.INPUT_PASSWORD)
+        input_password = self.browser.find_element(*self.INPUT_PASSWORD_REG)
         input_password.send_keys(password)
-        input_password = self.browser.find_element(*self.INPUT_PASSWORD_REPEAT)
+        input_password = self.browser.find_element(*self.INPUT_PASSWORD_REG_REPEAT)
         input_password.send_keys(password)
         self.browser.find_element(*self.REGISTRATION_BUTTON).click()
 
+    def login(self):
+        input_email = self.browser.find_element(*self.INPUT_EMAIL_LOGIN)
+        input_email.send_keys(self.login_email)
+        input_password = self.browser.find_element(*self.INPUT_PASSWORD_LOGIN)
+        input_password.send_keys(self.login_password)
+        self.browser.find_element(*self.LOGIN_BUTTON).click()
 
     def should_be_login_page(self):
         self.should_be_login_form()
