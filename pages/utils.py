@@ -5,7 +5,7 @@ from faker import Faker
 class Utils():
 
     @staticmethod
-    def passwords():
+    def password():
         password = ''
         for x in range(9):
             password = password + random.choice(list('1234567890qwertyuiopASDFGHJKLZXCVBMNMNM'))

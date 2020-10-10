@@ -11,7 +11,7 @@ class TestForUserFromProductPage:
         login_page = LoginPage(browser)
         login_page.open()
         email = Utils.email()
-        password = Utils.passwords()
+        password = Utils.password()
         login_page.register(email, password)
         product_page = ProductPage(browser)
         product_page.open()
@@ -23,7 +23,7 @@ class TestForUserFromProductPage:
         login_page = LoginPage(browser)
         login_page.open()
         email = Utils.email()
-        password = Utils.passwords()
+        password = Utils.password()
         login_page.register(email, password)
         product_page = ProductPage(browser)
         product_page.open()
@@ -35,7 +35,7 @@ class TestForUserFromProductPage:
         login_page = LoginPage(browser)
         login_page.open()
         email = Utils.email()
-        password = Utils.passwords()
+        password = Utils.password()
         login_page.register(email, password)
         product_page = ProductPage(browser)
         product_page.open()
@@ -109,7 +109,6 @@ class TestForGuestFromProductPage:
         basket_page.should_not_be_products_in_basket()
         basket_page.check_basket_is_empty()
 
-
     def test_search_from_product_page(self, browser):
         # Arrange
         product_page = ProductPage(browser)
@@ -119,24 +118,3 @@ class TestForGuestFromProductPage:
         search_result_page = SearchResultPage(browser, browser.current_url)
         # Assert
         search_result_page.check_search_result()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

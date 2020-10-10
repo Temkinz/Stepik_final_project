@@ -15,7 +15,7 @@ class TestForUserFromMainPage:
         login_page = LoginPage(browser)
         login_page.login_form_is_present()
         email = Utils.email()
-        password = Utils.passwords()
+        password = Utils.password()
         login_page.register(email, password)
         main_page = MainPage(browser)
         # Assert

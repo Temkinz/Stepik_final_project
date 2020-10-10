@@ -9,11 +9,14 @@ from .pages.product_offer_page import ProductOfferPage
 
 
 def test_guest_can_add_product_with_offer_to_basket(browser, offer):
+    # Arrange
     product_page = ProductOfferPage(browser, offer)
     product_page.open()
     book_title = product_page.get_title()
     price = product_page.get_price()
+    # Act
     product_page.add_product_to_basket()
     product_page.solve_quiz_and_get_code()
+    # Assert
     product_page.should_be_product_in_basket(book_title)
     product_page.should_be_correct_price(price)

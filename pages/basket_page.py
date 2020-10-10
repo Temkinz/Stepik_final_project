@@ -5,14 +5,12 @@ from selenium.webdriver.common.by import By
 
 class BasketPage(ProductPage):
     BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner > p")
-    BASKET_EMPTY_TEXT = "Your basket is empty. Continue shopping"
     BASKET_EMPTY_MESSAGE = (By.CSS_SELECTOR, "#content_inner > p")
-    BASKET_EMPTY_TEXT = "Your basket is empty. Continue shopping"
-
     PRODUCTS_IN_BASKET = (By.CSS_SELECTOR, "h2.col-sm-6.h3")
     PRODUCTS_QUANTITY_INPUT = (By.CSS_SELECTOR, "#id_form-0-quantity")
     UPDATE_QUANTITY_BUTTON = (By.CSS_SELECTOR, "div.checkout-quantity button")
 
+    basket_empty_text = "Your basket is empty. Continue shopping"
     basket_page_link = "http://selenium1py.pythonanywhere.com/basket/"
 
     def __init__(self, browser):
@@ -20,10 +18,10 @@ class BasketPage(ProductPage):
 
     def check_basket_is_empty(self):
         basket_message = self.browser.find_element(*self.BASKET_EMPTY_MESSAGE).text
-        assert self.BASKET_EMPTY_TEXT in basket_message, f"expected {self.BASKET_EMPTY_TEXT}, got {basket_message}"
+        assert self.basket_empty_text in basket_message, f"expected {self.basket_empty_text}, got {basket_message}"
 
     def should_not_be_products_in_basket(self):
-        assert self.is_not_element_present(*self.PRODUCTS_IN_BASKET), \
+        assert self.element_is_not_present(*self.PRODUCTS_IN_BASKET), \
             "Product in the basket is presented, but should not be"
 
     def change_quantity_of_products_to_zero(self):

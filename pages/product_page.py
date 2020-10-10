@@ -15,11 +15,11 @@ class ProductPage(BasePage):
         BasePage.__init__(self, browser, self.product_page_link)
 
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*self.SUCCESS_MESSAGE), \
+        assert self.element_is_not_present(*self.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
 
     def should_be_disappeared(self):
-        assert self.is_disappeared(*self.SUCCESS_MESSAGE), \
+        assert self.element_is_disappeared(*self.SUCCESS_MESSAGE), \
             "Success message is disappeared"
 
     def add_product_to_basket(self):
