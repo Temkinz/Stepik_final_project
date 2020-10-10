@@ -10,9 +10,7 @@ class TestForUserFromProductPage:
         # Arrange
         login_page = LoginPage(browser)
         login_page.open()
-        email = Utils.email()
-        password = Utils.password()
-        login_page.register(email, password)
+        login_page.register(Utils.email(), Utils.password())
         product_page = ProductPage(browser)
         product_page.open()
         # Assert
@@ -22,9 +20,7 @@ class TestForUserFromProductPage:
         # Arrange
         login_page = LoginPage(browser)
         login_page.open()
-        email = Utils.email()
-        password = Utils.password()
-        login_page.register(email, password)
+        login_page.register(Utils.email(), Utils.password())
         product_page = ProductPage(browser)
         product_page.open()
         # Assert
@@ -34,9 +30,7 @@ class TestForUserFromProductPage:
         # Arrange
         login_page = LoginPage(browser)
         login_page.open()
-        email = Utils.email()
-        password = Utils.password()
-        login_page.register(email, password)
+        login_page.register(Utils.email(), Utils.password())
         product_page = ProductPage(browser)
         product_page.open()
         book_title = product_page.get_title()

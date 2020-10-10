@@ -43,11 +43,11 @@ class LoginPage(BasePage):
         input_password.send_keys(self.login_password)
         self.browser.find_element(*self.LOGIN_BUTTON).click()
 
-    def login_invalid(self):
+    def login_random(self, email, password):
         input_email = self.browser.find_element(*self.INPUT_EMAIL_LOGIN)
-        input_email.send_keys(self.invalid_login_email)
+        input_email.send_keys(email)
         input_password = self.browser.find_element(*self.INPUT_PASSWORD_LOGIN)
-        input_password.send_keys(self.login_password)
+        input_password.send_keys(password)
         self.browser.find_element(*self.LOGIN_BUTTON).click()
 
     def should_be_login_page(self):
