@@ -42,6 +42,13 @@ class BasePage():
             return True
         return False
 
+    def page_doesnt_change(self, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until_not(EC.title_contains(what))
+        except TimeoutException:
+            return True
+        return False
+
     def go_to_basket_page(self):
         self.browser.find_element(*self.BASKET_BUTTON).click()
 
@@ -69,3 +76,4 @@ class BasePage():
     def should_not_be_login_link(self):
         assert self.element_is_not_present(*self.LOGIN_LINK), \
             "Login link is presented"
+
