@@ -43,10 +43,9 @@ class TestForUserFromProductPage:
         price = product_page.get_price()
         # Act
         product_page.add_product_to_basket()
-        basket_page = BasketPage(browser)
         # Assert
-        basket_page.should_be_product_in_basket(book_title)
-        basket_page.should_be_correct_price(price)
+        product_page.should_be_product_in_basket(book_title)
+        product_page.should_be_correct_price(price)
 
 
 class TestForGuestFromProductPage:
@@ -93,10 +92,9 @@ class TestForGuestFromProductPage:
         price = product_page.get_price()
         # Act
         product_page.add_product_to_basket()
-        basket_page = BasketPage(browser)
         # Assert
-        basket_page.should_be_product_in_basket(book_title)
-        basket_page.should_be_correct_price(price)
+        product_page.should_be_product_in_basket(book_title)
+        product_page.should_be_correct_price(price)
 
     def test_guest_can_delete_product_from_basket(self, browser):
         # Arrange
