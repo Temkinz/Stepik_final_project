@@ -1,4 +1,5 @@
 from .base_page import BasePage
+from .utils import Utils
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
@@ -17,9 +18,6 @@ class LoginPage(BasePage):
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "button[name = 'registration_submit']")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
 
-    login_email = "test30082020@gmail.com"
-    invalid_login_email = "test30082020@gmail.ru"
-    login_password = "Test202020"
     login_alert_expected = "Oops! We found some errors"
 
     login_page_link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
@@ -36,11 +34,11 @@ class LoginPage(BasePage):
         input_password.send_keys(password)
         self.browser.find_element(*self.REGISTRATION_BUTTON).click()
 
-    def login(self):
+    def login(self, email, password):
         input_email = self.browser.find_element(*self.INPUT_EMAIL_LOGIN)
-        input_email.send_keys(self.login_email)
+        input_email.send_keys(email)
         input_password = self.browser.find_element(*self.INPUT_PASSWORD_LOGIN)
-        input_password.send_keys(self.login_password)
+        input_password.send_keys(password)
         self.browser.find_element(*self.LOGIN_BUTTON).click()
 
     def login_random(self, email, password):

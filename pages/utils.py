@@ -3,6 +3,8 @@ from faker import Faker
 
 
 class Utils():
+    login_email = "test30082020@gmail.com"
+    login_password = "Test202020"
 
     @staticmethod
     def password():
